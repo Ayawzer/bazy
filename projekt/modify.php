@@ -7,7 +7,7 @@
 	or die ('Błąd połączenia z serwerem: ' . mysqli_error($conn));
 	
 	//echo 'Połączenie udane <br>';
-
+    $idf = $_POST['Id_film'];
     $name = $_POST["nazwa"];
     $type = $_POST["gatunek"];
     $dir = $_POST["rezyser"];
@@ -15,21 +15,23 @@
     $lng = $_POST["dlfilmu"];
     $grd = $_POST["ocena"];
     
-    if (isset($name, $lng, $year, $dir, $type, $grd)) header("location: ./index.php?nogrd");
     /*if (isset($lng)) header("location: ./index.php?nolng");
     if (isset($year)) header("location: ./index.php?noyear");
     if (isset($dir)) header("location: ./index.php?nodir");
     if (isset($type)) header("location: ./index.php?notype");
     if (isset($name)) header("location: ./index.php?noname");*/
 
-    $sql = "INSERT INTO Film (Nazwa,Id_gatunku,Rezyser,Rok_produkcji,dlugosc_filmu) values ('$name',$type,'$dir',$year,'$lng');";
+    /*$sql = "UPDATE Film SET 'Nazwa'=".$name." 'Id_gatunky'=".$type." 'Rezyser'=".$dir." WHERE gracz_id=".$_GET['usun'].";";
     mysqli_query($conn, $sql);
-    $sql = "INSERT INTO Moja_ocena (Id_film, Ocena) VALUES ('".mysqli_insert_id($conn)."',$grd);";
+*/
+    
+    $sql = "UPDATE Film SET Nazwa='$name',Id_gatunku=$type,Rezyser='$dir',Rok_produkcji='$year',dlugosc_filmu='$lng' WHERE Id_film=$idf;";
+    mysqli_query($conn, $sql);
+    $sql = "UPDATE Moja_ocena SET Ocena=$grd WHERE Id_film=$idf";
 
     if ($conn->query($sql) === FALSE) echo "Error: ".$sql."<br>".$conn->error;
-    
-    
-    header("location: ./index.php");
+
+    header("location: ./info.php?Id_film=$idf");
 
     $conn->close();
 

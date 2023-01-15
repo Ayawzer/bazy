@@ -3,7 +3,7 @@ body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: whitesmoke;
     font-size: 30px;
-    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 .main {
@@ -29,7 +29,6 @@ body {
 }
 
 table,td,th {
-    border: solid 1px rgb(234 179 8);
     border-collapse: collapse;
 }
 
@@ -46,6 +45,8 @@ th {
 .back {
     margin-top: 5rem;
     text-align: center;
+    display: flex;
+    justify-content: space-around;
 }
 
 .back > a {
@@ -53,7 +54,6 @@ th {
     text-decoration: none;
     padding: 30px 40px;
     color: whitesmoke;
-    width: 100%;
     border-radius: 1rem;
 }
 
@@ -65,3 +65,43 @@ th {
     opacity: 0.5;
     text-decoration: underline;
 }
+
+.legend {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    margin: 2rem;
+    color: rgb(234 179 8);
+}
+
+.hlegend {
+    margin-left: 2rem;
+    margin-top: 4rem;
+    font-size: larger;
+    color: whitesmoke;
+}
+
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  input[type=submit] {
+    background-color: rgb(234 179 8);
+    border-radius: 1rem;
+    border: none;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: whitesmoke;
+    font-size: 30px;
+    padding: 30px 40px;
+     
+  }
+
+  input[type=submit]:hover {
+    cursor: pointer;
+    opacity: 0.5;
+  }
