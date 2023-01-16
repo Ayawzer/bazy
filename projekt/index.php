@@ -27,12 +27,19 @@
         echo '<h1 class="title">MOJA STRONA DO ŚLEDZENIA OBEJRZANYCH FILMÓW</h1>';
     echo '';
         echo '<div class="form">';
+        if(isset(($_GET['search']))){
+            echo '<form class="g1" action="search.php" method="POST">';
+        } else {
             echo '<form class="g1" action="dodaj.php" method="POST">';
+        }
                 echo '<label for="nazwa">Nazwa:</label><br>';
                 echo '<input type="text" id="nazwa" name="nazwa" ';
                 if(isset($_GET['nogrd'])) echo 'placeholder="Podaj nazwe filmu"';
                 echo '><br>';
 echo '';
+            if(isset(($_GET['search']))) {
+
+            } else {
                 echo '<label for="gatunek">Gatunek:</label><br>';
                 echo '<select name="gatunek" id="gatunek">';
                     echo '<option value="1">Thriller</option>';
@@ -48,10 +55,9 @@ echo '';
                     echo '<option value="11">Dramat</option>';
                     echo '<option value="12">Dokument</option>';
                 echo '</select>';
-                //if(isset($_GET['nogrd'])) echo 'placeholder="Podaj numer odpowiadajacy gatunkowi"';
                 echo '<br>';
 echo '';
-                echo '<label for="rezyser">Rezyser:</label><br>';
+                echo '<label for="rezyser">Reżyser:</label><br>';
                 echo '<input type="text" id="rezyser" name="rezyser"';
                 if(isset($_GET['nogrd'])) echo 'placeholder="Podaj rezysera filmu"';    
                 echo '><br>';
@@ -61,7 +67,7 @@ echo '';
                 if(isset($_GET['nogrd'])) echo 'placeholder="Podaj rok produkcji filmu"';
                 echo '><br>';
 echo '';
-                echo '<label for="dlfilmu">Dlugosc filmu:</label><br>';
+                echo '<label for="dlfilmu">Długość filmu:</label><br>';
                 echo '<input type="text" id="dlfilmu" name="dlfilmu"';
                 if(isset($_GET['nogrd'])) echo 'placeholder="Podaj dlugosc filmu 0:00"';
                 echo '><br>';
@@ -80,22 +86,37 @@ echo '';
                     echo '<option value="10">10</option>';
                 echo '</select>';
                 echo '<br>';
+        }
 echo '';
-                echo '<input type="submit" value="Dodaj">';
+                if(isset(($_GET['search']))) {
+                    echo '<input type="submit" value="Szukaj">';
+                    echo '<a href="index.php" class="backa">Wróć</a>';
+                } else {
+                    echo '<input type="submit" value="Dodaj">';
+                }
+
+                if(isset(($_GET['search']))) {
+                } else {
+                    echo '<a class="search" href="index.php?search">Przejdź do formularza wyszukiwania</a>';
+                }
             echo '</form>';
+            
 echo '';
             echo '<table class="g2">';
-
             $result = mysqli_query($conn, "SELECT * FROM `Film` LEFT JOIN Moja_ocena ON Film.Id_film=Moja_ocena.Id_film")
             or die("Błąd w zapytaniu do tabeli gracze");
             
             echo '<tbody>';
             while($row = mysqli_fetch_array($result)) {
                 
-				echo '<tr>';
+                if((isset($_GET['search']))&&($_GET['search']==$row['Id_film'])) {
+                    echo '<tr style="border: 3px solid rgb(234 179 8);">';
+                } else {
+                    echo '<tr>';
+                }
 				    echo '<td>'.$row['Nazwa'].'</td><td>'.$row['dlugosc_filmu'].'</td>';
                     echo '<td>'.$row['Ocena'].'/10</td>';
-                    echo '<td><a class="tr__link" href="info.php?Id_film='.$row['Id_film'].'">Sprawdz</a></td>';
+                    echo '<td><a class="tr__link" href="info.php?Id_film='.$row['Id_film'].'">Sprawdź</a></td>';
                     echo '<td>';
                     if((isset($_GET['Id_film']))&&($_GET['Id_film']==$row['Id_film']))
                         echo '<a class="tr__link" style="background-color: rgb(215, 38, 70);" href="index.php?usun='.$row['Id_film'].'">Potwierdź</a>';
@@ -106,6 +127,7 @@ echo '';
 				echo '</tr>';
 				
 			};
+
 			echo '</tbody>';
 			echo '</table>';
 

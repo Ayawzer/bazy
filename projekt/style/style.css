@@ -117,3 +117,36 @@ td:nth-last-child(1) {
 .tr__link:hover {
     opacity: 0.5;
 }
+
+.search {
+    display: inline-block;
+    background-color: rgb(234 179 8);
+    color: rgb(39 39 42);
+    padding: 14px 20px;
+    border-radius: 4px;
+    font-size: larger;
+    font-weight: bold;
+    margin: 8px 3rem;
+    text-decoration: none;
+
+}
+
+.search:hover {
+    opacity: 0.5;
+}
+
+.backa {
+    display: inline-block;
+    background-color: rgb(234 179 8);
+    color: rgb(39 39 42);
+    padding: 14px 20px;
+    border-radius: 4px;
+    font-size: larger;
+    font-weight: bold;
+    margin: 8px 3rem;
+    text-decoration: none;
+}
+
+.backa:hover {
+    opacity: 0.5;
+}
