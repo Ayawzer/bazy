@@ -15,15 +15,6 @@
     $lng = $_POST["dlfilmu"];
     $grd = $_POST["ocena"];
     
-    /*if (isset($lng)) header("location: ./index.php?nolng");
-    if (isset($year)) header("location: ./index.php?noyear");
-    if (isset($dir)) header("location: ./index.php?nodir");
-    if (isset($type)) header("location: ./index.php?notype");
-    if (isset($name)) header("location: ./index.php?noname");*/
-
-    /*$sql = "UPDATE Film SET 'Nazwa'=".$name." 'Id_gatunky'=".$type." 'Rezyser'=".$dir." WHERE gracz_id=".$_GET['usun'].";";
-    mysqli_query($conn, $sql);
-*/
     
     $sql = "UPDATE Film SET Nazwa='$name',Id_gatunku=$type,Rezyser='$dir',Rok_produkcji='$year',dlugosc_filmu='$lng' WHERE Id_film=$idf;";
     mysqli_query($conn, $sql);

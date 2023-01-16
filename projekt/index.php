@@ -22,10 +22,6 @@
         mysqli_query($conn, "DELETE FROM Film WHERE Id_film=".$_GET['usun'].";");
     }
 
-    /*if(isset($_GET['usun']))
-		//echo "DELETE FROM gracze WHERE gracz_id=".$_GET['usun'].";";
-		mysqli_query($conn,"DELETE FROM gracze WHERE gracz_id=".$_GET['usun'].";"); */
-
     echo '<div class="main">';
     echo '';
         echo '<h1 class="title">MOJA STRONA DO ŚLEDZENIA OBEJRZANYCH FILMÓW</h1>';
@@ -37,10 +33,23 @@
                 if(isset($_GET['nogrd'])) echo 'placeholder="Podaj nazwe filmu"';
                 echo '><br>';
 echo '';
-                echo '<label for="gatunek">Gatunek id:</label><br>';
-                echo '<input type="text" id="gatunek" name="gatunek"';
-                if(isset($_GET['nogrd'])) echo 'placeholder="Podaj numer odpowiadajacy gatunkowi"';
-                echo '><br>';
+                echo '<label for="gatunek">Gatunek:</label><br>';
+                echo '<select name="gatunek" id="gatunek">';
+                    echo '<option value="1">Thriller</option>';
+                    echo '<option value="2">Familijny</option>';
+                    echo '<option value="3">Horror</option>';
+                    echo '<option value="4">Fantasy</option>';
+                    echo '<option value="5">Science fiction</option>';
+                    echo '<option value="6">Romans</option>';
+                    echo '<option value="7">Musical</option>';
+                    echo '<option value="8">Akcja</option>';
+                    echo '<option value="9">Komedia</option>';
+                    echo '<option value="10">Anime</option>';
+                    echo '<option value="11">Dramat</option>';
+                    echo '<option value="12">Dokument</option>';
+                echo '</select>';
+                //if(isset($_GET['nogrd'])) echo 'placeholder="Podaj numer odpowiadajacy gatunkowi"';
+                echo '<br>';
 echo '';
                 echo '<label for="rezyser">Rezyser:</label><br>';
                 echo '<input type="text" id="rezyser" name="rezyser"';
@@ -58,9 +67,19 @@ echo '';
                 echo '><br>';
 echo '';
                 echo '<label for="ocena">Moja ocena:</label><br>';
-                echo '<input type="text" id="ocena" name="ocena"';
-                if(isset($_GET['nogrd'])) echo 'placeholder="Podaj ocene filmu"';
-                echo '><br>';
+                echo '<select name="ocena" id="ocena">';
+                    echo '<option value="1">1</option>';
+                    echo '<option value="2">2</option>';
+                    echo '<option value="3">3</option>';
+                    echo '<option value="4">4</option>';
+                    echo '<option value="5">5</option>';
+                    echo '<option value="6">6</option>';
+                    echo '<option value="7">7</option>';
+                    echo '<option value="8">8</option>';
+                    echo '<option value="9">9</option>';
+                    echo '<option value="10">10</option>';
+                echo '</select>';
+                echo '<br>';
 echo '';
                 echo '<input type="submit" value="Dodaj">';
             echo '</form>';
@@ -91,25 +110,7 @@ echo '';
 			echo '</table>';
 
     echo '</div>';
-echo '';
-    echo '<h1 class="hlegend">Legenda gatunków:</h1>';
-echo '';
-    echo '<div class="legend">';
-echo '';
-        echo '<p>1 - Thiller</p>';
-        echo '<p>2 - Familijny</p>';
-        echo '<p>3 - Horror</p>';
-        echo '<p>4 - Fantasy</p>';
-        echo '<p>5 - Science fiction</p>';
-        echo '<p>6 - Romans</p>';
-        echo '<p>7 - Muscial</p>';
-        echo '<p>8 - Akcja</p>';
-        echo '<p>9 - Komedia</p>';
-        echo '<p>10 - Anime</p>';
-        echo '<p>11 - Dramat</p>';
-        echo '<p>12 - Dokument</p>';
-        echo '</div>';
-        echo '</div>';
+    echo '</div>';
 ?>
 </body>
 </html>

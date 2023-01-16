@@ -14,9 +14,6 @@ include 'autoryzacja.php';
 $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname)
 or die ('Błąd połączenia z serwerem: ' . mysqli_error($conn));
 
-/*if ((isset($_GET['potwierdz']))&& ($_GET['potwierdz']==$row['Id_film'])) {
-    echo "UPDATE Film SET 'imie'=".$_POST['fname']." 'nazwisko'=".$_POST['lname']." 'numer'=".$_POST['number']." WHERE gracz_id=".$_GET['usun'].";";
-}*/
 
 if (isset($_GET['zmien'])) {
 
@@ -78,7 +75,18 @@ echo '<div class="main">';
             echo '<td><input type="text" name="rezyser" value="'.$row['Rezyser'].'"></input></td>';
             echo '<td><input type="text" name="rprod" value="'.$row['Rok_produkcji'].'"></input></td>';
             echo '<td><input type="text" name="dlfilmu" value="'.$row['dlugosc_filmu'].'"></input></td>';
-            echo '<td><input type="text" name="ocena" value="'.$row['Ocena'].'"></input></td>';
+            echo '<td><select name="ocena" id="ocena">';
+                echo '<option value="1">1</option>';
+                echo '<option value="2">2</option>';
+                echo '<option value="3">3</option>';
+                echo '<option value="4">4</option>';
+                echo '<option value="5">5</option>';
+                echo '<option value="6">6</option>';
+                echo '<option value="7">7</option>';
+                echo '<option value="8">8</option>';
+                echo '<option value="9">9</option>';
+                echo '<option value="10">10</option>';
+            echo '</select></td>';
         } else {
             echo '<td>'.$row['Nazwa'].'</td><td>'.$row['Gatunek'].'</td><td>'.$row["Rezyser"].'</td><td>'.$row['Rok_produkcji'].'</td><td>'.$row['dlugosc_filmu'].'</td><td>'.$row['Ocena'].'</td>';
         }

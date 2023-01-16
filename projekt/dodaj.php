@@ -16,11 +16,6 @@
     $grd = $_POST["ocena"];
     
     if (isset($name, $lng, $year, $dir, $type, $grd)) header("location: ./index.php?nogrd");
-    /*if (isset($lng)) header("location: ./index.php?nolng");
-    if (isset($year)) header("location: ./index.php?noyear");
-    if (isset($dir)) header("location: ./index.php?nodir");
-    if (isset($type)) header("location: ./index.php?notype");
-    if (isset($name)) header("location: ./index.php?noname");*/
 
     $sql = "INSERT INTO Film (Nazwa,Id_gatunku,Rezyser,Rok_produkcji,dlugosc_filmu) values ('$name',$type,'$dir',$year,'$lng');";
     mysqli_query($conn, $sql);
